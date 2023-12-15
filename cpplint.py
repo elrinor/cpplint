@@ -4002,7 +4002,7 @@ def CheckCommaSpacing(filename, clean_lines, linenum, error):
   # verify that lines contain missing whitespaces, second pass on raw
   # lines to confirm that those missing whitespaces are not due to
   # elided comments.
-  if (Search(r',[^,\s]', ReplaceAll(r'\boperator\s*,\s*\(', 'F(', line)) and
+  if (Search(r',[^,\s]', ReplaceAll(r'\b__VA_OPT__\s*\(,\)', '', ReplaceAll(r'\boperator\s*,\s*\(', 'F(', line))) and
       Search(r',[^,\s]', raw[linenum])):
     error(filename, linenum, 'whitespace/comma', 3,
           'Missing space after ,')
